@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <body oncontextmenu="return true"></body>
+    <meta http-equiv="refresh" content="">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDUCATION WEBSITES</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- custom js file link  -->
+    <script src="js/script.js" defer></script>
+
+    <script>
+ class VanillaPopup {
+  // Init 
+  constructor() {
+    this.removeToken = true;                                                // set to true to always remove token from localStorage, for testing purposes
+
+    // Set Vars
+    this.targetNode = document.querySelector("body");                       // Which element to inject message box into, default is the body element
+    this.currTime   = new Date().getTime();                                 // Store current time string in variable for validation and storage
+    this.readTime   = window.localStorage.getItem('vanillaPopupReadTime');  // leverage localStorage to store and check for read token
+    this.daysToShowMessageAgain = 3;                                        // Presuming nobody would want to show the same message more than once a day
+
+    // Message Content
+    this.messageTitle = "Important Notice!";   
+    this.messageBody  = `
+    <p>ADMISSION OPEN </p>
+    <p>
+      <strong>ADMISSION OPEN FOR 2023</strong>
+    </p>
+    `;
+    
+    // Style Rules
+    this.messageBoxBgColor      = "#f6f6f6";
+    this.messageBoxFontColor    = "#000000";
+
+    this.messageHeaderBgColor   = "#000000";
+    this.messageHeaderFontColor = "#ffffff";
+
+    this.closeIconColor         = "#ffffff";
+    this.closeIconHoverColor    = "#a52a2a";
+
+    this.messageBoxMinWidth     = "40%";
+    this.messageBoxBorderRadius = "15px";
+    
+
+    /**
+     * Number of days before pop up will be shown again in microtime
+     */
+    this.maxTimeAllowed = 60 * 60 * 24 * 1000 * this.daysToShowMessageAgain;    // "One Day" times number of days set
+    /**
+      * check if user has read the popup yet, 
+      * or if user has extended past the time set
+      * before showing the message again
+      */
+    if( !this.readTime || this.currTime - this.readTime > this.maxTimeAllowed ) {
+      this.showPopup();
+    }
+  }
+  
+  /**
+    * Main function to show popup
+    */
+  showPopup() {
+
+    // create and inject styles before creating Div to ensure proper styling
+    const styles      = document.createElement("style");
+    styles.innerHTML  = this.setStyleContent();
+    this.targetNode.appendChild(styles);
+
+    // create main div
+    const msgBoxDiv = document.createElement("div");
+    msgBoxDiv.setAttribute("id", "vanilla-msg-box");
+    msgBoxDiv.innerHTML = this.setMessageBody();
+    this.targetNode.appendChild(msgBoxDiv);
+
+    // create close box event listener
+    document.querySelector("#vanilla-box-close").addEventListener("click", () => {
+      // add token to local storage only after popup is closed
+      this.removeToken || window.localStorage.setItem("vanillaPopupReadTime", this.currTime);
+      this.targetNode.removeChild(msgBoxDiv);
+    });
+
+  }
+
+  /**
+   * SetMessageBody
+   * format the content of the message box
+   */
+  setMessageBody() {
+    return `
+    <div id="vanilla-box-wrapper">
+      <div id="vanilla-box-header">
+        <h1>${this.messageTitle}</h1>
+        <span id="vanilla-box-close"><i class="fa fa-times fa-2x"></i></span>
+      </div>
+      <div id="vanilla-box-content">
+        ${this.messageBody}
+      </div>
+    </div>
+    `
+  }
+  setStyleContent() {
+    return `
+    #vanilla-msg-box {
+      position: fixed;
+      font-family: Arial, Sans-serif;
+      background-color: rgba(0,0,0,0.7);
+      z-index: 999999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #vanilla-box-wrapper{
+      background-color: ${this.messageBoxBgColor};
+      min-width: ${this.messageBoxMinWidth};
+      border-radius: ${this.messageBoxBorderRadius};
+    }
+    #vanilla-box-header {
+      background-color: ${this.messageHeaderBgColor};
+      color: ${this.messageHeaderFontColor};
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      border-top-left-radius: ${this.messageBoxBorderRadius};
+      border-top-right-radius: ${this.messageBoxBorderRadius};
+    }
+    #vanilla-box-header h1 {
+      margin: 0;
+    }
+    #vanilla-box-header #vanilla-box-close {
+      color: ${this.closeIconColor};
+      transition: all 0.2s ease; 
+    }
+    #vanilla-box-header #vanilla-box-close:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+      color: ${this.closeIconHoverColor};
+    }
+    #vanilla-box-content {
+      padding: 20px;
+    }
+    `;
+  }
+}
+
+// instantiate class
+const vanillaPopup = new VanillaPopup();
+    </script>
+
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<div id="menu-btn" class="fas fa-bars"></div>
+
+<header class="header">
+
+    <a href="https://www.facebook.com/profile.php?id=100083117121440" class="logo"> <i class="fas fa-graduation-cap"></i>HERA PUBLIC SCHOOL</a>
+
+    <nav class="navbar">
+        <a href="#home"> <i class="fas fa-home"></i> Home </a>
+        <a href="#category"> <i class="fas fa-book-open"></i> Subjects </a>
+        <a href="#about"> <i class="fas fa-address-card"></i> About </a>
+        <a href="#contact"> <i class="fas fa-phone"></i> Contact </a>
+        <a href="#reviews"> <i class="fas fa-star"></i> Reviews </a>
+        <a href="#Gallery"> <i class="fas fa-camera"></i> Gallery </a>
+    </nav>
+    <div class="share">
+      <a href="https://www.facebook.com/azmal.hushain.119" class="fab fa-facebook-f"></a>
+      <a href="https://t.me/azmal_hushain" class="fab fa-telegram"></a>
+      <a href="https://www.instagram.com/azmal_hushain1/" class="fab fa-instagram"></a>
+      <a href="https://www.tiktok.com/@ajmal_bin_ajmal" class="fab fa-tiktok"></a>
+   </div>
+    <p class="credit">created by <br><a href="personal portfolio/index.html"><span> 𝓐𝓩𝓜𝓐𝓛 𝓗𝓤𝓢𝓗𝓐𝓘𝓝</span></a><br> |all rights reserved!</p>
+</header>
+<!-- header section ends -->
+
+<!-- home section starts  -->
+<section class="home" id="home">
+    <div class="image">
+        <img src="images/logo.svg" alt="">
+    </div>
+
+    <div class="content">
+        <span>HERA PUBLIC SCHOOL</span>
+        <h3>A better learning future starts here.<a href="#">get started</a></h3>
+        <p>"Small class sizes, personalized attention, and a tight-knit community are just a few of the benefits your child will experience at our school. Our dedicated teachers and staff work closely with families to ensure each student reaches their full potential. Join our school community and give your child the gift of an exceptional education."></p>
+    </div>
+</section>
+<!-- home section ends -->
+
+<!-- info section starts  -->
+<section class="info-container">
+    <div class="box">
+        <i class="fas fa-user-graduate"></i>
+        <div class="info">
+            <h3>+100</h3>
+            <p>students</p>
+        </div>
+    </div>
+
+    <div class="box">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <div class="info">
+            <h3>+10</h3>
+            <p>teachers</p>
+        </div>
+    </div>
+
+    <div class="box">
+        <i class="fas fa-book"></i>
+        <div class="info">
+            <h3>+9</h3>
+            <p>subjects</p>
+        </div>
+    </div>
+</section>
+<!-- info section ends -->
+
+<!-- category section starts  -->
+<section class="category" id="category">
+    <div class="heading">
+        <span>OUR CLASSES</span>
+        <h3>SUBJECTS</h3>
+    </div>
+
+    <div class="box-container">
+        <div class="box">
+            <i class="fas fa-language"></i>
+            <h3>ENGLISH</h3>
+            <p>Our English program for primary students is designed to develop their reading and writing skills. Students will learn to read and write basic words, sentences, and short stories. The program also focuses on developing their listening and speaking skills.</p>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-calculator"></i>
+            <h3>MATHEMATICS</h3>
+            <p>Our mathematics program for primary students is designed to make math fun and interactive. Students will learn basic mathematical concepts such as numbers, counting, addition, subtraction, and shapes through hands-on activities and games.</p>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-mouse"></i>
+            <h3>COMPUTER</h3>
+            <p>Our computer science program for primary students is designed to introduce them to the basics of technology and computer literacy. Students will learn basic computer skills such as typing, mouse navigation, and internet safety through fun and interactive activities.</p>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-language"></i>
+            <h3>URDU</h3>
+            <p>Our Urdu program for primary students is designed to introduce them to the Urdu language and culture. Students will learn basic vocabulary, grammar, and sentence structure through interactive activities and games. They will also learn about Urdu literature and poetry.</p>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-music"></i>
+            <h3>MUSICS & DANCE</h3>
+            <p>Our Music and Dance program for primary students is designed to introduce them to the world of music and dance in a fun and interactive way. Students will learn basic rhythm, beat, and movement through singing, dancing, and playing musical instruments.</p>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-microscope"></i>
+            <h3>SCIENCE</h3>
+            <p>Our Science program for primary students is designed to introduce them to the world of science in an interactive and fun way. Students will learn about different topics such as plants, animals, and the five senses through hands-on experiments and activities.</p>
+        </div>
+    </div>
+</section>
+<!-- category section ends -->
+
+<!-- about section starts  -->
+<section class="about" id="about">
+
+    <div class="image">
+        <img src="images/about-img.svg" alt="">
+    </div>
+
+    <div class="content">
+        <span>ABOUT US</span>
+        <h3>"Helping Students on their path to better education."</h3>
+        <p>"we are more than just a school, we are a community of learners where students, staff, and parents work together to provide the best educational experience possible. We are committed to providing a high-quality education and a safe and inclusive environment for all students."</p>
+        <a href="#" class="btn">read more</a>
+    </div>
+
+</section>
+<!-- about section ends -->
+
+
+<!-- contact section starts  -->
+<section class="contact" id="contact">
+    <div class="heading">
+        <span>contact us</span>
+        <h3>get in touch</h3>
+    </div>
+
+    <div class="row">
+        <div class="contact-info-container">
+            <div class="box">
+                <i class="fas fa-phone"></i>
+                <div class="info">
+                    <h3>phone :</h3>
+                    <p>+977 980-4083862</p>
+                </div>
+            </div>
+
+            <div class="box">
+                <i class="fas fa-envelope"></i>
+                <div class="info">
+                    <h3>email :</h3>
+                  <p>raihana_naseem@yahoo.com</p>
+                    <p>jawwadzehen@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="box">
+                <i class="fas fa-map"></i>
+                <div class="info">
+                    <h3>address :</h3>
+                    <p>Sunsari, Bhokraha-2</p>
+                </div>
+            </div>
+
+            <div class="share">
+                <a href="" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+            </div>
+            
+        </div>
+
+        <form action="">
+            <div class="inputBox">
+                <input type="text" placeholder="name" name="" id="">
+                <input type="email" placeholder="email" name="" id="">
+            </div>
+            <div class="inputBox">
+                <input type="number" placeholder="phone" name="" id="">
+                <input type="text" placeholder="subject" name="" id="">
+            </div>
+            <textarea name="" placeholder="message" id="" cols="30" rows="10"></textarea>
+            <input type="submit" value="send message" class="btn">
+        </form>
+    </div>
+</section>
+<!-- contact section ends -->
+
+<!-- reviews section starts  -->
+<section class="reviews" id="reviews">
+    <div class="heading">
+        <span>Parents reviews</span>
+        <h3>what they say?</h3>
+    </div>
+    <div class="box-container">
+        <div class="box">
+            <img src="images/pic-1.png" alt="">
+            <h3>Parents 1</h3>
+            <p>"We have been so impressed by the level of communication and transparency from the school. We always feel informed and involved in our child's education."</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="images/pic-2.png" alt="">
+            <h3>parents 2</h3>
+            <p>"The school's extracurricular activities are fantastic! Our child is able to explore new interests and develop new skills. He is also making friends and having fun in a safe and supportive environment."</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="images/pic-3.png" alt="">
+            <h3>parents 3</h3>
+            <p>"Our child has thrived academically and socially at this school. The teachers are dedicated and truly care about their students. They provide a challenging and engaging curriculum that has helped our child reach new heights."</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- reviews section ends -->
+
+<!-- gallery section starts -->
+<section class="Gallery" id="Gallery">
+    <div class="heading">
+        <span>Gallery</span>
+        <h3>our MEMORIES</h3>
+    </div>
+
+    <div class="box-container">
+        <div class="box">
+            <img src="images/blog-3.svg" alt="">
+            <a href="Gallery/gallery.html" class="title">GO TO GALLERY</a>
+            <p class="blog-description">Click on Go To Gallery</p>
+            <div class="icons">
+                <p><i class="fas fa-calendar"></i> 1st jan, 2023</p>
+                <a href="Gallery/gallery.html">read more</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- blogs section ends -->
+</body>
+</html>
