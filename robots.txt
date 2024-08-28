@@ -1,4 +1,4 @@
-User-agent: *
+User-agent: Googlebot
 Disallow: /cgi-bin/
 Disallow: /images/
 Allow:/portfolio/
